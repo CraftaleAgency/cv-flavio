@@ -1,0 +1,160 @@
+/* Template "LaTeX": ispirato a Jake's Resume. Bianco e nero, serif, titoli in maiuscoletto
+   con filetto, date allineate a destra. È il formato più sicuro per gli ATS. */
+
+:global(.page).page {
+  --ink: #111;
+  --muted: #444;
+  padding: 12mm 15mm 18mm;
+  color: var(--ink);
+  font-family: var(--font-source-serif), "Times New Roman", serif;
+  font-size: 9pt;
+  line-height: 1.35;
+}
+
+.page a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-thickness: 0.4pt;
+  text-underline-offset: 0.5mm;
+}
+
+.header {
+  text-align: center;
+}
+
+.name {
+  font-size: 24pt;
+  font-weight: 700;
+  font-variant: small-caps;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+}
+
+.title {
+  margin-top: 0.8mm;
+  font-size: 10pt;
+  font-style: italic;
+}
+
+.contacts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1.6mm;
+  font-size: 8.4pt;
+}
+
+.contacts li:not(:last-child)::after {
+  content: "|";
+  margin: 0 1.8mm;
+  color: var(--muted);
+}
+
+.heading {
+  margin: 4mm 0 1.6mm;
+  padding-bottom: 0.4mm;
+  border-bottom: 0.6pt solid var(--ink);
+  font-size: 11pt;
+  font-weight: 600;
+  font-variant: small-caps;
+  letter-spacing: 0.02em;
+}
+
+.page:not(:first-of-type) > .heading:first-child {
+  margin-top: 0;
+}
+
+.skills li {
+  margin-top: 0.2mm;
+}
+
+.skills strong {
+  font-weight: 700;
+}
+
+.entry {
+  margin-bottom: 2.4mm;
+  break-inside: avoid;
+}
+
+.entryHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4mm;
+}
+
+.entryHead h3 {
+  font-size: 9.6pt;
+  font-weight: 700;
+}
+
+.context {
+  font-weight: 400;
+  font-style: italic;
+}
+
+.period {
+  flex: none;
+  font-size: 9pt;
+}
+
+.meta {
+  font-style: italic;
+  font-size: 8.8pt;
+}
+
+.intro {
+  margin-top: 0.4mm;
+}
+
+.award {
+  font-style: italic;
+  font-size: 8.8pt;
+}
+
+.bullets {
+  margin-top: 0.4mm;
+  padding-left: 5mm;
+}
+
+.bullets li {
+  position: relative;
+  margin-top: 0.2mm;
+  padding-left: 3mm;
+}
+
+.bullets li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+}
+
+.bullets strong {
+  font-weight: 600;
+}
+
+.privacy {
+  position: absolute;
+  left: 15mm;
+  right: 15mm;
+  bottom: 14mm;
+  color: var(--muted);
+  font-size: 7.4pt;
+  font-style: italic;
+}
+
+.footer {
+  position: absolute;
+  left: 15mm;
+  right: 15mm;
+  bottom: 8mm;
+  display: flex;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 7.6pt;
+}
+
+.footer span:first-child {
+  display: none;
+}

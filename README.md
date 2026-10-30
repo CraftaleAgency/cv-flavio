@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# cv-flavio
 
-## Getting Started
+Il mio CV come sito Next.js: un unico file di contenuti (`lib/cv.ts`) e sei impaginazioni A4 pronte da stampare o salvare in PDF.
 
-First, run the development server:
+| Template | Stile |
+|---|---|
+| `/professionale` | Navy corporate, foto e numeri chiave |
+| `/latex` | Ispirato a Jake's Resume: serif, bianco e nero |
+| `/harvard` | Formato lineare delle business school, EB Garamond |
+| `/awesome` | Ispirato ad Awesome-CV, bordeaux su bianco |
+| `/moderno` | Ardesia con accento indaco |
+| `/terminal` | Testata scura da terminale, timeline in stile git |
+
+Tutti i template sono in 2 pagine, a colonna singola (tranne Terminal) e con testo selezionabile.
+
+## Uso
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev          # http://localhost:3000
+npm run pdf          # build + PDF del template principale
+node scripts/pdf.mjs out.pdf /latex   # PDF di un template specifico (dopo `npm run build`)
+npm run ats          # build + controllo ATS su tutti i template
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+`npm run pdf` e `scripts/pdf.mjs` usano Chrome headless: imposta `CHROME_PATH` se non è in `/Applications/Google Chrome.app`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Controllo ATS
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+`scripts/ats.mjs` genera il PDF di ogni template, ne estrae il testo con `pdftotext` (poppler) come farebbe un parser e verifica che i dati siano completi, le sezioni in ordine e le esperienze non mescolate.
 
-## Learn More
+## Modificare i contenuti
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Tutto il testo sta in `lib/cv.ts`; l'elenco dei template in `lib/templates.ts`. Per aggiungere un template basta una cartella in `app/` con un CSS module e, per i layout a colonna singola, il componente `components/single-column.tsx`.

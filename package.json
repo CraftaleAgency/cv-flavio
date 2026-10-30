@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "pdf": "next build && node scripts/pdf.mjs",
+    "ats": "next build && node scripts/ats.mjs"
   },
   "dependencies": {
     "next": "16.4.3",

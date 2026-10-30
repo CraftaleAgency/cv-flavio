@@ -1,0 +1,165 @@
+/* Template "Harvard": il formato lineare delle business school. EB Garamond, nome in
+   maiuscolo spaziato, sezioni in maiuscolo con filetto, molto bianco, nessun colore. */
+
+:global(.page).page {
+  --ink: #2b2118;
+  --muted: #6b6259;
+  --rule: #2b2118;
+  padding: 16mm 19mm 20mm;
+  color: var(--ink);
+  font-family: var(--font-garamond), Garamond, Georgia, serif;
+  font-size: 10pt;
+  line-height: 1.36;
+}
+
+.page a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-thickness: 0.4pt;
+  text-underline-offset: 0.6mm;
+}
+
+.header {
+  padding-bottom: 3mm;
+  border-bottom: 0.8pt solid var(--rule);
+  text-align: center;
+}
+
+.name {
+  font-size: 19pt;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+.title {
+  margin-top: 1.4mm;
+  font-size: 10.5pt;
+  font-style: italic;
+}
+
+.contacts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1.8mm;
+  font-size: 9.2pt;
+}
+
+.contacts li:not(:last-child)::after {
+  content: "·";
+  margin: 0 2mm;
+}
+
+.heading {
+  margin: 5mm 0 2mm;
+  padding-bottom: 0.6mm;
+  border-bottom: 0.5pt solid var(--rule);
+  font-size: 9.6pt;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.page:not(:first-of-type) > .heading:first-child {
+  margin-top: 0;
+}
+
+.profile {
+  text-align: justify;
+  hyphens: auto;
+}
+
+.skills li {
+  margin-top: 0.3mm;
+}
+
+.skills strong {
+  font-weight: 600;
+}
+
+.entry {
+  margin-bottom: 3mm;
+  break-inside: avoid;
+}
+
+.entryHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4mm;
+}
+
+.entryHead h3 {
+  font-size: 10.5pt;
+  font-weight: 600;
+}
+
+.context {
+  font-weight: 400;
+  font-style: italic;
+}
+
+.period {
+  flex: none;
+  font-size: 9.6pt;
+}
+
+.meta {
+  font-style: italic;
+  font-size: 9.6pt;
+}
+
+.intro {
+  margin-top: 0.5mm;
+}
+
+.award {
+  font-style: italic;
+}
+
+.bullets {
+  margin-top: 0.5mm;
+}
+
+.bullets li {
+  position: relative;
+  margin-top: 0.3mm;
+  padding-left: 4.5mm;
+}
+
+.bullets li::before {
+  content: "•";
+  position: absolute;
+  left: 1.2mm;
+}
+
+.bullets strong {
+  font-weight: 600;
+}
+
+.privacy {
+  position: absolute;
+  left: 19mm;
+  right: 19mm;
+  bottom: 15mm;
+  color: var(--muted);
+  font-size: 8pt;
+  font-style: italic;
+}
+
+.footer {
+  position: absolute;
+  left: 19mm;
+  right: 19mm;
+  bottom: 9mm;
+  display: flex;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 8.4pt;
+}
+
+.footer span:first-child {
+  display: none;
+}

@@ -1,0 +1,355 @@
+/* Template "Terminal": intestazione scura, titoli monospace, timeline in stile git. */
+
+:global(.page).page {
+  --bg: #0d1117;
+  --fg: #e6edf3;
+  --green: #1a7f37;
+  --green-bright: #7ee787;
+  --blue: #0969da;
+  --code-bg: #f6f8fa;
+  --rule: #d8dee4;
+  --grey: #59636e;
+  padding: 0;
+  color: #1f2328;
+}
+
+.page a {
+  color: var(--blue);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--blue) 35%, transparent);
+  text-underline-offset: 0.5mm;
+}
+
+/* ---------- Intestazione ---------- */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  gap: 8mm;
+  padding: 8mm 14mm 6mm;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.prompt {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 7.6pt;
+  color: #8b949e;
+}
+
+.user {
+  color: var(--green-bright);
+}
+
+.path {
+  color: #79c0ff;
+}
+
+.header h1 {
+  margin-top: 1.5mm;
+  font-size: 25pt;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+}
+
+.title {
+  margin-top: 1.4mm;
+  color: var(--green-bright);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 9.6pt;
+}
+
+.flags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1mm 4mm;
+  margin-top: 3.4mm;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 7.2pt;
+  color: #8b949e;
+}
+
+.flags li::before {
+  content: "--";
+  color: #484f58;
+  margin-right: 0.6mm;
+}
+
+.header .flags a {
+  color: #79c0ff;
+  text-decoration-color: rgb(121 192 255 / 0.4);
+}
+
+.photo {
+  flex: none;
+  width: 27mm;
+  height: 27mm;
+  border-radius: 2mm;
+  object-fit: cover;
+  border: 0.5mm solid #30363d;
+}
+
+/* ---------- Corpo ---------- */
+
+.body {
+  padding: 0 14mm;
+}
+
+.bodyTop {
+  padding-top: 11mm;
+}
+
+.profile {
+  margin-top: 4mm;
+  font-size: 8.7pt;
+  line-height: 1.5;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.5mm;
+  margin-top: 3.4mm;
+}
+
+.stats li {
+  display: flex;
+  flex-direction: column;
+  padding: 2mm 2.6mm;
+  border: 0.5pt solid var(--rule);
+  border-radius: 1.5mm;
+  background: var(--code-bg);
+}
+
+.stats strong {
+  color: var(--green);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 14pt;
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.stats span {
+  color: var(--grey);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 6.6pt;
+  line-height: 1.3;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: 1fr 52mm;
+  gap: 7mm;
+}
+
+.heading {
+  margin: 4.2mm 0 2.2mm;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 9pt;
+  font-weight: 600;
+}
+
+.hash {
+  color: var(--green);
+}
+
+/* ---------- Timeline ---------- */
+
+.timeline {
+  position: relative;
+  padding-left: 4.5mm;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 1.1mm;
+  top: 1.5mm;
+  bottom: 1.5mm;
+  width: 0.5pt;
+  background: var(--rule);
+}
+
+.commit {
+  position: relative;
+  margin-bottom: 2.8mm;
+  break-inside: avoid;
+}
+
+.commit::before {
+  content: "";
+  position: absolute;
+  left: -4.5mm;
+  top: 1.1mm;
+  width: 2.4mm;
+  height: 2.4mm;
+  border: 0.5mm solid var(--green);
+  border-radius: 50%;
+  background: white;
+}
+
+.commitHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 3mm;
+}
+
+.commitHead h3 {
+  font-size: 9.2pt;
+  font-weight: 650;
+}
+
+.context {
+  color: var(--grey);
+  font-weight: 500;
+}
+
+.period {
+  flex: none;
+  padding: 0 1.4mm;
+  border-radius: 1mm;
+  background: var(--code-bg);
+  color: var(--grey);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 7pt;
+}
+
+.meta {
+  color: var(--grey);
+  font-size: 7.8pt;
+}
+
+.intro {
+  margin-top: 0.8mm;
+}
+
+.lines {
+  margin-top: 0.6mm;
+}
+
+.lines li {
+  position: relative;
+  padding-left: 3.4mm;
+  margin-top: 0.2mm;
+}
+
+.lines li::before {
+  content: "+";
+  position: absolute;
+  left: 0;
+  color: var(--green);
+  font-family: var(--font-geist-mono), monospace;
+  font-weight: 600;
+}
+
+.lines strong {
+  font-weight: 600;
+}
+
+.stack {
+  margin-top: 1.2mm;
+  color: var(--grey);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 6.8pt;
+}
+
+.award {
+  margin-top: 0.4mm;
+  color: #9a6700;
+  font-size: 7.6pt;
+  font-weight: 600;
+}
+
+/* ---------- Colonna laterale ---------- */
+
+.code {
+  padding: 2.4mm 2.8mm;
+  border: 0.5pt solid var(--rule);
+  border-radius: 1.5mm;
+  background: var(--code-bg);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 6.9pt;
+  line-height: 1.5;
+}
+
+.code p + p {
+  margin-top: 1.4mm;
+}
+
+.key {
+  color: #8250df;
+  font-weight: 600;
+}
+
+.punct {
+  color: var(--grey);
+  white-space: pre;
+}
+
+.awards li {
+  display: flex;
+  gap: 1.6mm;
+}
+
+.awards li + li {
+  margin-top: 1.8mm;
+}
+
+.check {
+  color: var(--green);
+  font-weight: 700;
+}
+
+.awards a {
+  font-size: 7.9pt;
+  font-weight: 600;
+}
+
+.awards p {
+  color: var(--grey);
+  font-size: 7.2pt;
+}
+
+/* ---------- Pagina 2 ---------- */
+
+.bodyTop > .heading:first-child {
+  margin-top: 0;
+}
+
+.eduGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3mm 7mm;
+}
+
+.privacy {
+  position: absolute;
+  left: 14mm;
+  right: 14mm;
+  bottom: 13.5mm;
+  color: var(--grey);
+  font-size: 6.8pt;
+}
+
+.footer {
+  position: absolute;
+  left: 14mm;
+  right: 14mm;
+  bottom: 8mm;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 2mm;
+  border-top: 0.5pt solid var(--rule);
+  color: var(--grey);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 6.6pt;
+}
+
+@media print {
+  .header {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

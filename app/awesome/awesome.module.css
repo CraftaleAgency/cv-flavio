@@ -1,0 +1,209 @@
+/* Template "Awesome": ispirato ad Awesome-CV. Nome con cognome in grassetto colorato,
+   titoli di sezione bicolori con filetto, date a destra in corsivo. Bordeaux su bianco. */
+
+:global(.page).page {
+  --ink: #333;
+  --muted: #777;
+  --rule: #d8d8d8;
+  --wine: #8b1e2d;
+  padding: 13mm 16mm 18mm;
+  color: var(--ink);
+  font-family: var(--font-source-sans), "Segoe UI", Arial, sans-serif;
+  font-size: 9.2pt;
+  line-height: 1.4;
+}
+
+.page a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--wine) 45%, transparent);
+  text-underline-offset: 0.5mm;
+}
+
+.header {
+  text-align: center;
+}
+
+.name {
+  font-size: 30pt;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+}
+
+.nameLast {
+  color: var(--wine);
+  font-weight: 700;
+}
+
+.title {
+  margin-top: 0.8mm;
+  color: var(--muted);
+  font-size: 9.6pt;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.contacts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 2mm;
+  color: var(--muted);
+  font-size: 8.4pt;
+}
+
+.contacts a {
+  color: var(--ink);
+}
+
+.contacts li:not(:last-child)::after {
+  content: "|";
+  margin: 0 1.8mm;
+  color: var(--rule);
+}
+
+/* Titolo bicolore: le prime tre lettere nel colore d'accento, come in Awesome-CV. */
+.heading {
+  position: relative;
+  margin: 5mm 0 2.2mm;
+  padding-bottom: 0.8mm;
+  border-bottom: 0.5pt solid var(--rule);
+  font-size: 13pt;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.heading::first-letter {
+  color: var(--wine);
+}
+
+.page:not(:first-of-type) > .heading:first-child {
+  margin-top: 0;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3mm;
+  margin-top: 2.6mm;
+  font-size: 7.8pt;
+  line-height: 1.3;
+  color: var(--muted);
+}
+
+.stats li {
+  padding-left: 2.4mm;
+  border-left: 0.6mm solid var(--wine);
+}
+
+.stats strong {
+  display: block;
+  color: var(--ink);
+  font-size: 12.5pt;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.skills li {
+  margin-top: 0.3mm;
+}
+
+.skills strong {
+  color: var(--wine);
+  font-weight: 600;
+}
+
+.entry {
+  margin-bottom: 3mm;
+  break-inside: avoid;
+}
+
+.entryHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4mm;
+}
+
+.entryHead h3 {
+  font-size: 10.5pt;
+  font-weight: 700;
+}
+
+.entryHead h3 a {
+  color: var(--wine);
+  text-decoration: none;
+}
+
+.context {
+  color: var(--muted);
+  font-weight: 400;
+  font-style: italic;
+}
+
+.period {
+  flex: none;
+  color: var(--wine);
+  font-size: 8.6pt;
+  font-style: italic;
+}
+
+.meta {
+  color: var(--muted);
+  font-size: 8.6pt;
+  font-style: italic;
+}
+
+.intro {
+  margin-top: 0.5mm;
+}
+
+.award {
+  color: var(--wine);
+  font-size: 8.6pt;
+  font-weight: 600;
+}
+
+.bullets li {
+  position: relative;
+  margin-top: 0.3mm;
+  padding-left: 3.6mm;
+}
+
+.bullets li::before {
+  content: "·";
+  position: absolute;
+  left: 0.6mm;
+  top: -0.05em;
+  color: var(--wine);
+  font-size: 1.5em;
+  line-height: 1;
+}
+
+.bullets strong {
+  font-weight: 600;
+}
+
+.privacy {
+  position: absolute;
+  left: 16mm;
+  right: 16mm;
+  bottom: 14mm;
+  color: var(--muted);
+  font-size: 7.4pt;
+}
+
+.footer {
+  position: absolute;
+  left: 16mm;
+  right: 16mm;
+  bottom: 8mm;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1.6mm;
+  border-top: 0.5pt solid var(--rule);
+  color: var(--muted);
+  font-size: 7.6pt;
+}

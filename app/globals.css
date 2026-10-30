@@ -1,26 +1,222 @@
 @import "tailwindcss";
 
+/* Il CV è un documento cartaceo: sempre tema chiaro. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
+  --ink: #15202b;
+  --muted: #5b6672;
+  --faint: #8a939c;
+  --line: #dde2e7;
+  --accent: #0b6477;
+  --accent-soft: #e9f2f4;
+  --desk: #e4e7ea;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--desk);
+  color: var(--ink);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.sheets {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10mm;
+  padding: 110px 4mm 90px;
+  overflow-x: auto;
+}
+
+.toolbar {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  max-width: calc(100vw - 32px);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 6px;
+  border-radius: 12px;
+  background: rgb(255 255 255 / 0.92);
+  box-shadow: 0 4px 18px rgb(0 0 0 / 0.12);
+  backdrop-filter: blur(8px);
+  font-size: 13px;
+}
+
+.toolbar-links {
+  display: flex;
+  gap: 2px;
+}
+
+.toolbar a {
+  padding: 6px 12px;
+  border-radius: 8px;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.toolbar a:hover {
+  background: var(--accent-soft);
+  color: var(--ink);
+}
+
+.toolbar a.active {
+  background: var(--ink);
+  color: white;
+}
+
+.toolbar button {
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ---------- Foglio A4 ---------- */
+
+.page {
+  position: relative;
+  flex: none;
+  width: 210mm;
+  height: 297mm;
+  padding: 13mm 14mm 16mm;
+  background: white;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.08), 0 12px 40px rgb(0 0 0 / 0.08);
+  font-size: 8.6pt;
+  line-height: 1.42;
+  overflow: hidden;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.page-footer {
+  position: absolute;
+  left: 14mm;
+  right: 14mm;
+  bottom: 8mm;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 2mm;
+  border-top: 0.5pt solid var(--line);
+  color: var(--faint);
+  font-size: 6.8pt;
+}
+
+/* ---------- Indice ---------- */
+
+.index {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 56px 24px 120px;
+}
+
+.index h1 {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.index > p {
+  margin-top: 6px;
+  color: var(--muted);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px 20px;
+  border-radius: 14px;
+  background: white;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.06), 0 8px 24px rgb(0 0 0 / 0.06);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.08), 0 14px 36px rgb(0 0 0 / 0.1);
+}
+
+.card-swatch {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+}
+
+.card h2 {
+  font-size: 17px;
+  font-weight: 650;
+}
+
+.card p {
+  color: var(--muted);
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 6px;
+}
+
+.card-tags span {
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 11.5px;
+  font-weight: 600;
+}
+
+/* ---------- Stampa ---------- */
+
+@page {
+  size: A4;
+  margin: 0;
+}
+
+@media print {
+  html,
+  body {
+    background: white;
+  }
+
+  .sheets {
+    display: block;
+    padding: 0;
+  }
+
+  .page {
+    box-shadow: none;
+    break-after: page;
+  }
+
+  .page:last-child {
+    break-after: auto;
+  }
+
+  .toolbar {
+    display: none;
+  }
 }
