@@ -1,0 +1,12 @@
+// Il sito è un export statico di Next.js (output: "export" in next.config.ts):
+// il Worker serve solo i file generati in out/, senza OpenNext.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cv-flavio",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./out",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}
