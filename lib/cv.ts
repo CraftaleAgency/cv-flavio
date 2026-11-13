@@ -109,7 +109,7 @@ export const cv = {
         },
         {
           lead: "Infrastruttura",
-          text: "rete Tailscale di 3 nodi. Server GPU (RTX 3060) con 20+ modelli open-source via Ollama e llama.cpp; nodi VPS con circa 40 servizi in 79 container Docker gestiti da Dokploy. Nessuna porta pubblica grazie a Cloudflare Tunnel; monitoraggio con Prometheus, Grafana e DCGM.",
+          text: "rete Tailscale di 3 nodi. Server GPU (RTX 3060) con 20+ modelli open-source via Ollama e llama.cpp; nodi VPS con circa 40 servizi in 79 container Docker gestiti da Dokploy. Nessuna porta pubblica (Cloudflare Tunnel, UFW esteso a Docker); monitoraggio con Prometheus, Grafana e DCGM.",
         },
       ],
       stack: ["Next.js", "TypeScript", "Supabase", "LiteLLM", "Langfuse", "Ollama", "Docker"],
@@ -154,6 +154,10 @@ export const cv = {
     {
       group: "DevOps",
       items: ["Docker", "Dokploy", "CI/CD Azure", "Linux", "Cloudflare Tunnel", "Tailscale", "Prometheus", "Grafana"],
+    },
+    {
+      group: "Sicurezza",
+      items: ["Zero Trust networking", "Hardening Linux", "UFW / iptables", "Firewall Docker", "Slither", "Audit trail LLM"],
     },
     { group: "Web3", items: ["Solidity", "Foundry", "Hedera", "Base", "1inch SDK", "ENS"] },
     { group: "Altri linguaggi", items: ["Python", "C", "C++", "Bash"] },
