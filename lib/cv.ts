@@ -286,7 +286,7 @@ export const cv = {
       school: "Università eCampus",
       schoolHref: "https://www.uniecampus.it/",
       period: "2022",
-      text: "Voto 87/110. Tesi sul benessere organizzativo nella pubblica amministrazione.",
+      text: "Tesi sul benessere organizzativo nella pubblica amministrazione.",
     },
     {
       title: "Diploma in Servizi Socio-Sanitari",
